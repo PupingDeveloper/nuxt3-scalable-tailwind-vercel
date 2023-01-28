@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    ssr:true,
     app: {
       head: {
           htmlAttrs: {
@@ -9,11 +10,11 @@ export default defineNuxtConfig({
             class: 'demo'
           },
           charset: 'utf-8',
-          titleTemplate: '%s | IT Genius Engineering',
+          titleTemplate: '%s | Pepo IT',
           meta: [
             {
               name: 'author',
-              content: 'IT Genius Engineering Ltd., Thailand'
+              content: 'Pepo IT Engineering Ltd., Thailand'
             },
             {
               name: 'viewport',
@@ -30,14 +31,19 @@ export default defineNuxtConfig({
       },
   },
   modules: [
-    'nuxt-icon'
-    // [
-    //   // Nuxt Robots
-    //   '@nuxtjs/robots',
-    //   {
-    //     UserAgent: "*",
-    //     Disallow: "",
-    //   }
-    // ],
-  ]
+    'nuxt-icon',
+    [
+      // Nuxt Robots
+      "@nuxtjs/robots",
+      {
+        UserAgent: "*",
+        Disallow: "",
+      },
+    ],
+  ],
+  runtimeConfig: {
+    public: {
+      wpUri: process.env.WP_URI,
+    }
+  },
 })
